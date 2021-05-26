@@ -238,5 +238,6 @@ def play(height):
             counter = 0
         time.sleep(0.04)
 
-
+if __name__ == "__main__":
+    play(18)
 

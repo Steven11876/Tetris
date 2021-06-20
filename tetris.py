@@ -1,4 +1,3 @@
-
 ### tetris ###
 
 class oblock:
@@ -99,26 +98,12 @@ def randomblocktype():
     return [oblock, lblock, jblock, iblock, sblock, tblock, zblock][n]
 
 def breakline(board):
-    for a in range(len(board)-1, 0, -1):
-        if board[a]==["x", "x", "x", "x", "x", "x", "x", "x", "x", "x"]:
-            for a in range(a, 0, -1):
-                board[a]=board[a-1]
-            board[0]= ["","","","","","","","","",""]
-    for a in range(len(board)-1, 0, -1):
-        if board[a]==["x", "x", "x", "x", "x", "x", "x", "x", "x", "x"]:
-            for a in range(a, 0, -1):
-                board[a]=board[a-1]
-            board[0]= ["","","","","","","","","",""]
-    for a in range(len(board)-1, 0, -1):
-        if board[a]==["x", "x", "x", "x", "x", "x", "x", "x", "x", "x"]:
-            for a in range(a, 0, -1):
-                board[a]=board[a-1]
-            board[0]= ["","","","","","","","","",""]
-    for a in range(len(board)-1, 0, -1):
-        if board[a]==["x", "x", "x", "x", "x", "x", "x", "x", "x", "x"]:
-            for a in range(a, 0, -1):
-                board[a]=board[a-1]
-            board[0]= ["","","","","","","","","",""]
+    for i in range(4):
+        for a in range(len(board)-1, 0, -1):
+            if board[a]==["x", "x", "x", "x", "x", "x", "x", "x", "x", "x"]:
+                for a in range(a, 0, -1):
+                    board[a]=board[a-1]
+                board[0]= [" "," "," "," "," "," "," "," "," "," "]
 
 def spawn(blocktype, board, x, y, form):
     o = blocktype(x, y, form)
@@ -208,7 +193,7 @@ def play(height):
     end = False
     counter = 0
     print_board(board)
-    o=spawn(oblock, board, 5, 1, 0)
+    o=spawn(iblock, board, 5, 1, 0)
     while not end:
         if keyboard.is_pressed("a"):
             next_move= "a"
@@ -237,7 +222,8 @@ def play(height):
             difficulty -= 0.1
             counter = 0
         time.sleep(0.04)
+        
+        
 
 if __name__ == "__main__":
     play(18)
-
